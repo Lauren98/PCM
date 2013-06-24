@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html dir="ltr"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <title>Item Feedback Report</title>
+        <link rel="stylesheet" type="text/css" href="PCM%20Practice%20test%201st%20try_files/style_assessment.css">
+    <link rel="stylesheet" type="text/css" href="PCM%20Practice%20test%201st%20try_files/jquery-ui-custom.css">
+    <link rel="stylesheet" type="text/css" href="PCM%20Practice%20test%201st%20try_files/common.css">
+    <link rel="stylesheet" type="text/css" href="PCM%20Practice%20test%201st%20try_files/assessment.css">
+    <link rel="stylesheet" type="text/css" href="PCM%20Practice%20test%201st%20try_files/takeexam.css">
+    <style>
+
+      label {
+        display: block;
+        position: relative;
+        padding: 4px 16px;
+      }
+
+      input[type="radio"], input[type="checkbox"] {
+        display: block;
+        position: absolute;
+        margin: 0;
+        top: 4px;
+        left: 0;
+      }
+
+      img.tick {
+        margin: 0;
+      }
+
+      .review {
+        margin-top: 1em;
+      }
+
+      
+      #subscores {
+        margin: 1em 0;
+      }
+
+      .subscore-label {
+        font-weight: bold;
+      }
+
+      .hidden {
+        overflow: hidden;
+        visibility: hidden;
+        height: 0;
+        width: 0;
+      }
+
+    </style>
+        <script src="PCM%20Practice%20test%201st%20try_files/ga.js" async="" type="text/javascript"></script><script language="JavaScript" src="PCM%20Practice%20test%201st%20try_files/examResponse.js"></script>
+    <script language="JavaScript" src="PCM%20Practice%20test%201st%20try_files/swfobject.js"></script>
+        <script language="JavaScript" src="PCM%20Practice%20test%201st%20try_files/examInit.js"></script>
+    <script language="JavaScript" src="PCM%20Practice%20test%201st%20try_files/examReposition.js"></script>
+    <script language="JavaScript" src="PCM%20Practice%20test%201st%20try_files/jquery-1.js"></script>
+    <script language="JavaScript" src="PCM%20Practice%20test%201st%20try_files/jquery-ui-custom.js"></script>
+    <script language="JavaScript" src="PCM%20Practice%20test%201st%20try_files/Core.js"></script>
+    <script language="JavaScript" src="PCM%20Practice%20test%201st%20try_files/Toolbar.js"></script>
+    <script language="JavaScript" src="PCM%20Practice%20test%201st%20try_files/PTAPI.js"></script>
+    <script>
+
+      var vdscore;
+      
+     var smvs = {
+                       '7819': [
+                                      'knet-it_201532',                          'knet-it_201543',                          'knet-it_204813',                          'knet-it_206365',                          'knet-it_206367',                          'knet-it_206413',                          'knet-it_206416',                          'knet-it_206460',                          'knet-it_206462',                          'knet-it_206471',                          'knet-it_206543',                          'knet-it_206560',                          'knet-it_206563',                          'knet-it_206566',                          'knet-it_206611',                          'knet-it_206650'                      ]              };
+
+      $(document).ready(function() {
+
+        vdscore = new Core(this);
+        vdscore.init();
+        vdscore.toolbar.initTools("");
+        vdscore.toolbar.addTool("main", "Item Feedback Report", null);
+        jQuery.event.add(window, "resize", function() {
+          vdscore.updateRender();
+        });
+
+        
+        var items = $('.item');
+
+        function filter(id) {
+          var smv = smvs[id];
+          if (smv) {
+            items.addClass('hidden');
+            for (var i = 0; i < smv.length; i++) {
+              $('#' + smv[i]).removeClass('hidden');
+            }
+          } else {
+            items.removeClass('hidden');
+          }
+        }
+
+        $('#select-subscore').bind('change', function(event) {
+          filter($(this).val());
+        });
+
+        filter($('#select-subscore').val());
+
+      });
+
+      function debug(string) {
+        try {
+          console.log("DEBUG: "+string);
+        } catch (err) {
+          // do nothing with error
+        }
+      }
+
+      /// SSAI/T configuration parameters.
+      var flashInteractive = false;
+      var flashInterface = "learner";
+      var flashPrefix = "ssflash/";
+	  var flashLanguage = "en";
+
+      function init() {
+        setup(true);
+      }
+
+              prev_name[0] = "RESPONSE_MCSA_it_201532"; 
+        prev_value[0] = "201532=1085656";
+              prev_name[1] = "RESPONSE_MCSA_it_201543"; 
+        prev_value[1] = "201543=1083466";
+              prev_name[2] = "RESPONSE_MCMA_it_204813"; 
+        prev_value[2] = "204813=1078212";
+              prev_name[3] = "RESPONSE_MCMA_it_204813"; 
+        prev_value[3] = "204813=1078209";
+              prev_name[4] = "RESPONSE_MCSA_it_206365"; 
+        prev_value[4] = "206365=1079440";
+              prev_name[5] = "RESPONSE_MCSA_it_206367"; 
+        prev_value[5] = "206367=1080825";
+              prev_name[6] = "RESPONSE_MCMA_it_206413"; 
+        prev_value[6] = "206413=1080617";
+              prev_name[7] = "RESPONSE_MCMA_it_206413"; 
+        prev_value[7] = "206413=1080621";
+              prev_name[8] = "RESPONSE_MCMA_it_206413"; 
+        prev_value[8] = "206413=1080618";
+              prev_name[9] = "RESPONSE_MCSA_it_206416"; 
+        prev_value[9] = "206416=1081213";
+              prev_name[10] = "RESPONSE_MCSA_it_206460"; 
+        prev_value[10] = "206460=1080819";
+              prev_name[11] = "RESPONSE_MCSA_it_206462"; 
+        prev_value[11] = "206462=1078726";
+              prev_name[12] = "RESPONSE_MCMA_it_206471"; 
+        prev_value[12] = "206471=1080871";
+              prev_name[13] = "RESPONSE_MCMA_it_206471"; 
+        prev_value[13] = "206471=1080868";
+              prev_name[14] = "RESPONSE_MCSA_it_206543"; 
+        prev_value[14] = "206543=1078399";
+              prev_name[15] = "RESPONSE_MCSA_it_206560"; 
+        prev_value[15] = "206560=1077185";
+              prev_name[16] = "RESPONSE_MCSA_it_206563"; 
+        prev_value[16] = "206563=1077204";
+              prev_name[17] = "RESPONSE_MCSA_it_206566"; 
+        prev_value[17] = "206566=1079126";
+              prev_name[18] = "RESPONSE_MCSA_it_206611"; 
+        prev_value[18] = "206611=1078053";
+              prev_name[19] = "RESPONSE_MCMA_it_206650"; 
+        prev_value[19] = "206650=1080575";
+              prev_name[20] = "RESPONSE_MCMA_it_206650"; 
+        prev_value[20] = "206650=1080573";
+      
+      
+    </script>
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31020351-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  </head>
+  <body onload="init()">
+    <div id="core" class="core">
+            <div style="height: 27px;" id="toolbar" class="ui-widget-header ui-corner-all">
+        
+        <span style="position: relative; top: 2.53333px; left: 8px;" id="location" class="toolbar-button">Location:</span>
+        <span style="top: 3px; left: 9.81667px;" id="locationButtons" class="ui-buttonset ui-button"><input class="ui-helper-hidden-accessible" id="main" name="locationButtons" checked="checked" type="radio"><label aria-disabled="false" role="button" aria-pressed="true" class="ui-state-active ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left ui-corner-right" for="main"><span class="ui-button-text"><span class="toolbar-button">Item Feedback Report</span></span></label></span>
+      </div>
+      <h1>IT Essentials (Version 5.0) - ITE Practice Final</h1>
+      <hr>
+      <div id="instructions" class="ui-widget">
+        <p>Below is the feedback on items for which you did not receive full credit. Some interactive items may not display your response.</p>
+      </div>
+            <div id="subscores">
+        <span class="subscore-label">Subscore:</span>
+        <select id="select-subscore">
+                      <option selected="selected" value="7819">Domain Knowledge - Weighted Score </option>
+                  </select>
+      </div>
+                                          <div id="items">
+                  <div class="item" id="knet-it_201532">
+            <!-- START MCSA, MCMA, FIB --><div class="Text" id="AIit_201532TextDiv"><table cellpadding="0" cellspacing="0" width="800"><tbody><tr><td class="questionNum" width="25">2</td><td valign="top" width="743"><form onsubmit="return false;" name="AIit_201532"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td colspan="2"><div class="ai-stem">When
+ a dual core CPU with Hyper-Threading features is installed on a 
+motherboard, how many instructions can&nbsp;the CPU simultaneously 
+process?</div></td></tr><tr><td style="padding-right:1em;white-space:nowrap"><b>Correct</b><br><b>Response</b><br></td><td style="width:2048px"><b>Your</b><br><b>Response</b><br></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_201532_1085654"><input id="RESPONSE_MCSA_it_201532_1085654" name="RESPONSE_MCSA_it_201532" value="1085654" disabled="disabled" type="RADIO">2</label></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCSA_it_201532_1085655"><input id="RESPONSE_MCSA_it_201532_1085655" name="RESPONSE_MCSA_it_201532" value="1085655" disabled="disabled" type="RADIO">4</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_201532_1085656"><input checked="checked" id="RESPONSE_MCSA_it_201532_1085656" name="RESPONSE_MCSA_it_201532" value="1085656" disabled="disabled" type="RADIO">6</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_201532_1085657"><input id="RESPONSE_MCSA_it_201532_1085657" name="RESPONSE_MCSA_it_201532" value="1085657" disabled="disabled" type="RADIO">8</label></td></tr><tr><td colspan="2"><div class="itemfeedback">With Hyper-Threading, two pieces of code can be processed simultaneously by a single core.</div></td></tr></tbody></table></form></td></tr><tr><td></td></tr></tbody></table></div><script type="text/javascript">
+      Question.index++;
+      Question[Question.index] = new QuestionObj("MCSA","AIit_201532","RESPONSE_MCSA_it_201532",1);
+      
+        Question[Question.index].response_labels[1] = "201532";
+      </script><!-- END MCSA, MCMA, FIB -->
+<div class="review" id="review">
+<table>
+<tbody><tr>
+<td><img src="PCM%20Practice%20test%201st%20try_files/spacer.gif" border="0" height="1" width="10"></td><td class="content"><script language="JavaScript">
+	  prev_name[prev_name.length]="RESPONSE_MCSA_it_201532";
+	  prev_value[prev_value.length]="201532=1085656";
+	  </script>
+<table>
+<tbody><tr>
+<td nowrap="1">This item references content from the following areas:<blockquote>IT Essentials<blockquote>
+<ul>
+<li>
+1.1.2
+ 
+Internal PC Components
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</td>
+</tr>
+</tbody></table>
+<br><!-- START MCSA, MCMA, FIB --><script language="JavaScript">
+  <!--
+    
+                                                                                                        
+    Question.index++;
+    Question[Question.index] = new QuestionObj("MCSA","AIit_201532","RESPONSE_MCSA_it_201532",1);
+                                                                                                        
+    
+    Question[Question.index].response_labels[1] = "201532";
+    
+                                                                                                        
+  //-->
+  </script><!-- END MCSA, MCMA, FIB --></td>
+</tr>
+</tbody></table>
+</div>
+
+          </div>
+                  <div class="item" id="knet-it_201543">
+            <!-- START MCSA, MCMA, FIB --><div class="Text" id="AIit_201543TextDiv"><table cellpadding="0" cellspacing="0" width="800"><tbody><tr><td class="questionNum" width="25">3</td><td valign="top" width="743"><form onsubmit="return false;" name="AIit_201543"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td colspan="2"><div class="ai-stem">Which factor should be considered when selecting cooling fans for a PC case?</div></td></tr><tr><td style="padding-right:1em;white-space:nowrap"><b>Correct</b><br><b>Response</b><br></td><td style="width:2048px"><b>Your</b><br><b>Response</b><br></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_201543_1083466"><input checked="checked" id="RESPONSE_MCSA_it_201543_1083466" name="RESPONSE_MCSA_it_201543" value="1083466" disabled="disabled" type="RADIO">the type of CPU that is installed</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_201543_1083467"><input id="RESPONSE_MCSA_it_201543_1083467" name="RESPONSE_MCSA_it_201543" value="1083467" disabled="disabled" type="RADIO">the current BIOS version</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_201543_1083468"><input id="RESPONSE_MCSA_it_201543_1083468" name="RESPONSE_MCSA_it_201543" value="1083468" disabled="disabled" type="RADIO">the amount of installed RAM</label></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCSA_it_201543_1083469"><input id="RESPONSE_MCSA_it_201543_1083469" name="RESPONSE_MCSA_it_201543" value="1083469" disabled="disabled" type="RADIO">the number of installed adapter cards</label></td></tr><tr><td colspan="2"><div class="itemfeedback">Additional hardware components create additional heat.</div></td></tr></tbody></table></form></td></tr><tr><td></td></tr></tbody></table></div><script type="text/javascript">
+      Question.index++;
+      Question[Question.index] = new QuestionObj("MCSA","AIit_201543","RESPONSE_MCSA_it_201543",1);
+      
+        Question[Question.index].response_labels[1] = "201543";
+      </script><!-- END MCSA, MCMA, FIB -->
+<div class="review" id="review">
+<table>
+<tbody><tr>
+<td><img src="PCM%20Practice%20test%201st%20try_files/spacer.gif" border="0" height="1" width="10"></td><td class="content"><script language="JavaScript">
+	  prev_name[prev_name.length]="RESPONSE_MCSA_it_201543";
+	  prev_value[prev_value.length]="201543=1083466";
+	  </script>
+<table>
+<tbody><tr>
+<td nowrap="1">This item references content from the following areas:<blockquote>IT Essentials<blockquote>
+<ul>
+<li>
+1.3.1
+ 
+Specialized Computer Systems
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</td>
+</tr>
+</tbody></table>
+<br><!-- START MCSA, MCMA, FIB --><script language="JavaScript">
+  <!--
+    
+                                                                                                        
+    Question.index++;
+    Question[Question.index] = new QuestionObj("MCSA","AIit_201543","RESPONSE_MCSA_it_201543",1);
+                                                                                                        
+    
+    Question[Question.index].response_labels[1] = "201543";
+    
+                                                                                                        
+  //-->
+  </script><!-- END MCSA, MCMA, FIB --></td>
+</tr>
+</tbody></table>
+</div>
+
+          </div>
+                  <div class="item" id="knet-it_204813">
+            <!-- START MCSA, MCMA, FIB --><div class="Text" id="AIit_204813TextDiv"><table cellpadding="0" cellspacing="0" width="800"><tbody><tr><td class="questionNum" width="25">15</td><td valign="top" width="743"><form onsubmit="return false;" name="AIit_204813"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td colspan="2"><div class="ai-stem">Which two actions must be performed before installing RAM into a laptop? (Choose two.)</div></td></tr><tr><td style="padding-right:1em;white-space:nowrap"><b>Correct</b><br><b>Response</b><br></td><td style="width:2048px"><b>Your</b><br><b>Response</b><br></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCMA_it_204813_1078208"><input id="RESPONSE_MCMA_it_204813_1078208" name="RESPONSE_MCMA_it_204813" value="1078208" disabled="disabled" type="CHECKBOX">Use thermal compound to attach the memory to the motherboard.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCMA_it_204813_1078209"><input checked="checked" id="RESPONSE_MCMA_it_204813_1078209" name="RESPONSE_MCMA_it_204813" value="1078209" disabled="disabled" type="CHECKBOX">Before installing the RAM, update the saved CMOS settings to the newly configured amount of RAM.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCMA_it_204813_1078210"><input id="RESPONSE_MCMA_it_204813_1078210" name="RESPONSE_MCMA_it_204813" value="1078210" disabled="disabled" type="CHECKBOX">Remove the battery.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCMA_it_204813_1078211"><input id="RESPONSE_MCMA_it_204813_1078211" name="RESPONSE_MCMA_it_204813" value="1078211" disabled="disabled" type="CHECKBOX">Disconnect the display from the bottom of the laptop.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCMA_it_204813_1078212"><input checked="checked" id="RESPONSE_MCMA_it_204813_1078212" name="RESPONSE_MCMA_it_204813" value="1078212" disabled="disabled" type="CHECKBOX">Disconnect AC power.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCMA_it_204813_1078213"><input id="RESPONSE_MCMA_it_204813_1078213" name="RESPONSE_MCMA_it_204813" value="1078213" disabled="disabled" type="CHECKBOX">Remove the memory module retaining clips from the slots where the new RAM will insert.</label></td></tr><tr><td colspan="2"><div class="itemfeedback">Before
+ doing any repairs or installations inside a laptop, remove the battery 
+and disconnect AC power. The display does not have to be disconnected 
+for a RAM upgrade. The memory module retaining clips are not removed 
+during the installation process. Most computers automatically recognize 
+the installed or increased amount of RAM. If an adjustment in BIOS needs
+ to be done, it is after the installation process. Thermal compound is 
+used to attach a heat sink to a CPU.</div></td></tr></tbody></table></form></td></tr><tr><td></td></tr></tbody></table></div><script type="text/javascript">
+      Question.index++;
+      Question[Question.index] = new QuestionObj("MCMA","AIit_204813","RESPONSE_MCMA_it_204813",6);
+      
+        Question[Question.index].response_labels[1] = "204813";
+      </script><!-- END MCSA, MCMA, FIB -->
+<div class="review" id="review">
+<table>
+<tbody><tr>
+<td><img src="PCM%20Practice%20test%201st%20try_files/spacer.gif" border="0" height="1" width="10"></td><td class="content"><script language="JavaScript">
+	  prev_name[prev_name.length]="RESPONSE_MCMA_it_204813";
+	  prev_value[prev_value.length]="204813=1078212";
+	  
+	  prev_name[prev_name.length]="RESPONSE_MCMA_it_204813";
+	  prev_value[prev_value.length]="204813=1078209";
+	  </script>
+<table>
+<tbody><tr>
+<td nowrap="1">This item references content from the following areas:<blockquote>IT Essentials<blockquote>
+<ul>
+<li>
+7.5.1
+ 
+Expansion Options
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</td>
+</tr>
+</tbody></table>
+<br><!-- START MCSA, MCMA, FIB --><script language="JavaScript">
+  <!--
+    
+                                                                                                        
+    Question.index++;
+    Question[Question.index] = new QuestionObj("MCMA","AIit_204813","RESPONSE_MCMA_it_204813",6);
+                                                                                                        
+    
+    Question[Question.index].response_labels[1] = "204813";
+    
+                                                                                                        
+  //-->
+  </script><!-- END MCSA, MCMA, FIB --></td>
+</tr>
+</tbody></table>
+</div>
+
+          </div>
+                  <div class="item" id="knet-it_206365">
+            <!-- START MCSA, MCMA, FIB --><div class="Text" id="AIit_206365TextDiv"><table cellpadding="0" cellspacing="0" width="800"><tbody><tr><td class="questionNum" width="25">16</td><td valign="top" width="743"><form onsubmit="return false;" name="AIit_206365"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td colspan="2"><div class="ai-stem">Which statement correctly describes the cancellation effect?</div></td></tr><tr><td style="padding-right:1em;white-space:nowrap"><b>Correct</b><br><b>Response</b><br></td><td style="width:2048px"><b>Your</b><br><b>Response</b><br></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206365_1079440"><input checked="checked" id="RESPONSE_MCSA_it_206365_1079440" name="RESPONSE_MCSA_it_206365" value="1079440" disabled="disabled" type="RADIO">Twisted-pair
+ cabling pairs two positively-charged wires or two negatively-charged 
+wires, which doubles the signal strength and cancels noise.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206365_1079441"><input id="RESPONSE_MCSA_it_206365_1079441" name="RESPONSE_MCSA_it_206365" value="1079441" disabled="disabled" type="RADIO">Coaxial cables have a positively-charged end and a negatively-charged end, which cancel each other's magnetic fields.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCSA_it_206365_1079442"><input id="RESPONSE_MCSA_it_206365_1079442" name="RESPONSE_MCSA_it_206365" value="1079442" disabled="disabled" type="RADIO">The signals in the wires in each twisted-pair circuit generate magnetic fields which cancel each other out.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206365_1079443"><input id="RESPONSE_MCSA_it_206365_1079443" name="RESPONSE_MCSA_it_206365" value="1079443" disabled="disabled" type="RADIO">Fiber optic cables use light-emitting diodes to cancel noise on the cable.</label></td></tr><tr><td colspan="2"><div class="itemfeedback">Interference&nbsp;from
+ magnetic&nbsp;fields created by electricity flowing through a copper 
+wire can slow network communications. The&nbsp;cancellation&nbsp;effect 
+pairs two wires with opposite signals in a circuit, and the magnetic 
+fields cancel each other out. Coaxial cable, while it does use a copper 
+conductor, does not have twisted wires. Fiber media do not use 
+the&nbsp;cancellation&nbsp;effect because they do not use copper wires 
+to transmit signals.?</div></td></tr></tbody></table></form></td></tr><tr><td></td></tr></tbody></table></div><script type="text/javascript">
+      Question.index++;
+      Question[Question.index] = new QuestionObj("MCSA","AIit_206365","RESPONSE_MCSA_it_206365",1);
+      
+        Question[Question.index].response_labels[1] = "206365";
+      </script><!-- END MCSA, MCMA, FIB -->
+<div class="review" id="review">
+<table>
+<tbody><tr>
+<td><img src="PCM%20Practice%20test%201st%20try_files/spacer.gif" border="0" height="1" width="10"></td><td class="content"><script language="JavaScript">
+	  prev_name[prev_name.length]="RESPONSE_MCSA_it_206365";
+	  prev_value[prev_value.length]="206365=1079440";
+	  </script>
+<table>
+<tbody><tr>
+<td nowrap="1">This item references content from the following areas:<blockquote>IT Essentials<blockquote>
+<ul>
+<li>
+6.4.2
+ 
+Cables and Connectors
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</td>
+</tr>
+</tbody></table>
+<br><!-- START MCSA, MCMA, FIB --><script language="JavaScript">
+  <!--
+    
+                                                                                                        
+    Question.index++;
+    Question[Question.index] = new QuestionObj("MCSA","AIit_206365","RESPONSE_MCSA_it_206365",1);
+                                                                                                        
+    
+    Question[Question.index].response_labels[1] = "206365";
+    
+                                                                                                        
+  //-->
+  </script><!-- END MCSA, MCMA, FIB --></td>
+</tr>
+</tbody></table>
+</div>
+
+          </div>
+                  <div class="item" id="knet-it_206367">
+            <!-- START MCSA, MCMA, FIB --><div class="Text" id="AIit_206367TextDiv"><table cellpadding="0" cellspacing="0" width="800"><tbody><tr><td class="questionNum" width="25">17</td><td valign="top" width="743"><form onsubmit="return false;" name="AIit_206367"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td colspan="2"><div class="ai-stem">A
+ technician needs to add a new wireless device to a small WLAN. The WLAN
+ is a mixture of old and newer 802.11b and 802.11g devices. What choice 
+for the new device would provide the most interoperability for present 
+and future growth?</div></td></tr><tr><td style="padding-right:1em;white-space:nowrap"><b>Correct</b><br><b>Response</b><br></td><td style="width:2048px"><b>Your</b><br><b>Response</b><br></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206367_1080824"><input id="RESPONSE_MCSA_it_206367_1080824" name="RESPONSE_MCSA_it_206367" value="1080824" disabled="disabled" type="RADIO">Add a new 802.11a device.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206367_1080825"><input checked="checked" id="RESPONSE_MCSA_it_206367_1080825" name="RESPONSE_MCSA_it_206367" value="1080825" disabled="disabled" type="RADIO">Add a new 802.11b device.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206367_1080826"><input id="RESPONSE_MCSA_it_206367_1080826" name="RESPONSE_MCSA_it_206367" value="1080826" disabled="disabled" type="RADIO">Add a new 802.11g device.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCSA_it_206367_1080827"><input id="RESPONSE_MCSA_it_206367_1080827" name="RESPONSE_MCSA_it_206367" value="1080827" disabled="disabled" type="RADIO">Add a new 802.11n device.</label></td></tr><tr><td colspan="2"><div class="itemfeedback">802.11n
+ devices are&nbsp;interoperable&nbsp;with all the other standards, and 
+provide more bandwidth than the other standards. 802.11a is 
+not&nbsp;interoperable&nbsp;with any of the other standards. 802.11b and
+ 802.11g&nbsp;interoperate&nbsp;with each other, but do not provide the 
+bandwidth supplied by 802.11n devices.</div></td></tr></tbody></table></form></td></tr><tr><td></td></tr></tbody></table></div><script type="text/javascript">
+      Question.index++;
+      Question[Question.index] = new QuestionObj("MCSA","AIit_206367","RESPONSE_MCSA_it_206367",1);
+      
+        Question[Question.index].response_labels[1] = "206367";
+      </script><!-- END MCSA, MCMA, FIB -->
+<div class="review" id="review">
+<table>
+<tbody><tr>
+<td><img src="PCM%20Practice%20test%201st%20try_files/spacer.gif" border="0" height="1" width="10"></td><td class="content"><script language="JavaScript">
+	  prev_name[prev_name.length]="RESPONSE_MCSA_it_206367";
+	  prev_value[prev_value.length]="206367=1080825";
+	  </script>
+<table>
+<tbody><tr>
+<td nowrap="1">This item references content from the following areas:<blockquote>IT Essentials<blockquote>
+<ul>
+<li>
+6.6.1
+ 
+Cabled and Wireless
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</td>
+</tr>
+</tbody></table>
+<br><!-- START MCSA, MCMA, FIB --><script language="JavaScript">
+  <!--
+    
+                                                                                                        
+    Question.index++;
+    Question[Question.index] = new QuestionObj("MCSA","AIit_206367","RESPONSE_MCSA_it_206367",1);
+                                                                                                        
+    
+    Question[Question.index].response_labels[1] = "206367";
+    
+                                                                                                        
+  //-->
+  </script><!-- END MCSA, MCMA, FIB --></td>
+</tr>
+</tbody></table>
+</div>
+
+          </div>
+                  <div class="item" id="knet-it_206413">
+            <!-- START MCSA, MCMA, FIB --><div class="Text" id="AIit_206413TextDiv"><table cellpadding="0" cellspacing="0" width="800"><tbody><tr><td class="questionNum" width="25">20</td><td valign="top" width="743"><form onsubmit="return false;" name="AIit_206413"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td colspan="2"><div class="ai-stem">What are three common input devices found on laptops? (Choose three.)</div></td></tr><tr><td style="padding-right:1em;white-space:nowrap"><b>Correct</b><br><b>Response</b><br></td><td style="width:2048px"><b>Your</b><br><b>Response</b><br></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCMA_it_206413_1080617"><input checked="checked" id="RESPONSE_MCMA_it_206413_1080617" name="RESPONSE_MCMA_it_206413" value="1080617" disabled="disabled" type="CHECKBOX">touchpad</label></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCMA_it_206413_1080618"><input checked="checked" id="RESPONSE_MCMA_it_206413_1080618" name="RESPONSE_MCMA_it_206413" value="1080618" disabled="disabled" type="CHECKBOX">fingerprint reader</label></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCMA_it_206413_1080619"><input id="RESPONSE_MCMA_it_206413_1080619" name="RESPONSE_MCMA_it_206413" value="1080619" disabled="disabled" type="CHECKBOX">web camera</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCMA_it_206413_1080620"><input id="RESPONSE_MCMA_it_206413_1080620" name="RESPONSE_MCMA_it_206413" value="1080620" disabled="disabled" type="CHECKBOX">external monitor</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCMA_it_206413_1080621"><input checked="checked" id="RESPONSE_MCMA_it_206413_1080621" name="RESPONSE_MCMA_it_206413" value="1080621" disabled="disabled" type="CHECKBOX">PS/2 keyboard</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCMA_it_206413_1080622"><input id="RESPONSE_MCMA_it_206413_1080622" name="RESPONSE_MCMA_it_206413" value="1080622" disabled="disabled" type="CHECKBOX">AC power connector</label></td></tr><tr><td colspan="2"><div class="itemfeedback">Touchpads,
+ fingerprint readers, and web cameras are common devices on modern 
+laptops. &nbsp;An external monitor is an output device. While a PS/2 
+keyboard is an input device, it is not commonly used with laptops. An AC
+ power connector provides a method to recharge the battery, but provides
+ no data input to the laptop.?</div></td></tr></tbody></table></form></td></tr><tr><td></td></tr></tbody></table></div><script type="text/javascript">
+      Question.index++;
+      Question[Question.index] = new QuestionObj("MCMA","AIit_206413","RESPONSE_MCMA_it_206413",6);
+      
+        Question[Question.index].response_labels[1] = "206413";
+      </script><!-- END MCSA, MCMA, FIB -->
+<div class="review" id="review">
+<table>
+<tbody><tr>
+<td><img src="PCM%20Practice%20test%201st%20try_files/spacer.gif" border="0" height="1" width="10"></td><td class="content"><script language="JavaScript">
+	  prev_name[prev_name.length]="RESPONSE_MCMA_it_206413";
+	  prev_value[prev_value.length]="206413=1080617";
+	  
+	  prev_name[prev_name.length]="RESPONSE_MCMA_it_206413";
+	  prev_value[prev_value.length]="206413=1080621";
+	  
+	  prev_name[prev_name.length]="RESPONSE_MCMA_it_206413";
+	  prev_value[prev_value.length]="206413=1080618";
+	  </script>
+<table>
+<tbody><tr>
+<td nowrap="1">This item references content from the following areas:<blockquote>IT Essentials<blockquote>
+<ul>
+<li>
+7.1.1
+ 
+Laptop Components
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</td>
+</tr>
+</tbody></table>
+<br><!-- START MCSA, MCMA, FIB --><script language="JavaScript">
+  <!--
+    
+                                                                                                        
+    Question.index++;
+    Question[Question.index] = new QuestionObj("MCMA","AIit_206413","RESPONSE_MCMA_it_206413",6);
+                                                                                                        
+    
+    Question[Question.index].response_labels[1] = "206413";
+    
+                                                                                                        
+  //-->
+  </script><!-- END MCSA, MCMA, FIB --></td>
+</tr>
+</tbody></table>
+</div>
+
+          </div>
+                  <div class="item" id="knet-it_206416">
+            <!-- START MCSA, MCMA, FIB --><div class="Text" id="AIit_206416TextDiv"><table cellpadding="0" cellspacing="0" width="800"><tbody><tr><td class="questionNum" width="25">21</td><td valign="top" width="743"><form onsubmit="return false;" name="AIit_206416"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td colspan="2"><div class="ai-stem">Which component uses the greatest amount of power on most mobile devices?</div></td></tr><tr><td style="padding-right:1em;white-space:nowrap"><b>Correct</b><br><b>Response</b><br></td><td style="width:2048px"><b>Your</b><br><b>Response</b><br></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCSA_it_206416_1081211"><input id="RESPONSE_MCSA_it_206416_1081211" name="RESPONSE_MCSA_it_206416" value="1081211" disabled="disabled" type="RADIO">LCD screen</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206416_1081212"><input id="RESPONSE_MCSA_it_206416_1081212" name="RESPONSE_MCSA_it_206416" value="1081212" disabled="disabled" type="RADIO">camera</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206416_1081213"><input checked="checked" id="RESPONSE_MCSA_it_206416_1081213" name="RESPONSE_MCSA_it_206416" value="1081213" disabled="disabled" type="RADIO">CPU</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206416_1081214"><input id="RESPONSE_MCSA_it_206416_1081214" name="RESPONSE_MCSA_it_206416" value="1081214" disabled="disabled" type="RADIO">media player</label></td></tr><tr><td colspan="2"><div class="itemfeedback">The
+ LCD screen consumes the most power on most mobile devices. The CPU, 
+camera, and media player use power, but less extensively than the LCD 
+screen does. &nbsp;</div></td></tr></tbody></table></form></td></tr><tr><td></td></tr></tbody></table></div><script type="text/javascript">
+      Question.index++;
+      Question[Question.index] = new QuestionObj("MCSA","AIit_206416","RESPONSE_MCSA_it_206416",1);
+      
+        Question[Question.index].response_labels[1] = "206416";
+      </script><!-- END MCSA, MCMA, FIB -->
+<div class="review" id="review">
+<table>
+<tbody><tr>
+<td><img src="PCM%20Practice%20test%201st%20try_files/spacer.gif" border="0" height="1" width="10"></td><td class="content"><script language="JavaScript">
+	  prev_name[prev_name.length]="RESPONSE_MCSA_it_206416";
+	  prev_value[prev_value.length]="206416=1081213";
+	  </script>
+<table>
+<tbody><tr>
+<td nowrap="1">This item references content from the following areas:<blockquote>IT Essentials<blockquote>
+<ul>
+<li>
+8.2.4
+ 
+Common Mobile Device Features
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</td>
+</tr>
+</tbody></table>
+<br><!-- START MCSA, MCMA, FIB --><script language="JavaScript">
+  <!--
+    
+                                                                                                        
+    Question.index++;
+    Question[Question.index] = new QuestionObj("MCSA","AIit_206416","RESPONSE_MCSA_it_206416",1);
+                                                                                                        
+    
+    Question[Question.index].response_labels[1] = "206416";
+    
+                                                                                                        
+  //-->
+  </script><!-- END MCSA, MCMA, FIB --></td>
+</tr>
+</tbody></table>
+</div>
+
+          </div>
+                  <div class="item" id="knet-it_206460">
+            <!-- START MCSA, MCMA, FIB --><div class="Text" id="AIit_206460TextDiv"><table cellpadding="0" cellspacing="0" width="800"><tbody><tr><td class="questionNum" width="25">25</td><td valign="top" width="743"><form onsubmit="return false;" name="AIit_206460"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td colspan="2"><div class="ai-stem">A
+ client has provided a 4 GB SODIMM module to a technician to perform a 
+memory upgrade on a workstation, but the technician is having problems 
+installing it. What is a probable cause for this?</div></td></tr><tr><td style="padding-right:1em;white-space:nowrap"><b>Correct</b><br><b>Response</b><br></td><td style="width:2048px"><b>Your</b><br><b>Response</b><br></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCSA_it_206460_1080816"><input id="RESPONSE_MCSA_it_206460_1080816" name="RESPONSE_MCSA_it_206460" value="1080816" disabled="disabled" type="RADIO">The module is incompatible with the workstation.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206460_1080817"><input id="RESPONSE_MCSA_it_206460_1080817" name="RESPONSE_MCSA_it_206460" value="1080817" disabled="disabled" type="RADIO">The workstation requires flash memory.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206460_1080818"><input id="RESPONSE_MCSA_it_206460_1080818" name="RESPONSE_MCSA_it_206460" value="1080818" disabled="disabled" type="RADIO">The workstation requires solid state memory.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206460_1080819"><input checked="checked" id="RESPONSE_MCSA_it_206460_1080819" name="RESPONSE_MCSA_it_206460" value="1080819" disabled="disabled" type="RADIO">The workstation lacks an available slot.</label></td></tr><tr><td colspan="2"><div class="itemfeedback">SODIMM
+ RAM modules are used for laptop computers and are not compatible with 
+workstations. Solid state memory and flash memory are used for other 
+applications. Even if there is an available slot in a workstation, 
+the&nbsp;SODIMM&nbsp;will not fit in it.</div></td></tr></tbody></table></form></td></tr><tr><td></td></tr></tbody></table></div><script type="text/javascript">
+      Question.index++;
+      Question[Question.index] = new QuestionObj("MCSA","AIit_206460","RESPONSE_MCSA_it_206460",1);
+      
+        Question[Question.index].response_labels[1] = "206460";
+      </script><!-- END MCSA, MCMA, FIB -->
+<div class="review" id="review">
+<table>
+<tbody><tr>
+<td><img src="PCM%20Practice%20test%201st%20try_files/spacer.gif" border="0" height="1" width="10"></td><td class="content"><script language="JavaScript">
+	  prev_name[prev_name.length]="RESPONSE_MCSA_it_206460";
+	  prev_value[prev_value.length]="206460=1080819";
+	  </script>
+<table>
+<tbody><tr>
+<td nowrap="1">This item references content from the following areas:<blockquote>IT Essentials<blockquote>
+<ul>
+<li>
+1.1.2
+ 
+Internal PC Components
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</td>
+</tr>
+</tbody></table>
+<br><!-- START MCSA, MCMA, FIB --><script language="JavaScript">
+  <!--
+    
+                                                                                                        
+    Question.index++;
+    Question[Question.index] = new QuestionObj("MCSA","AIit_206460","RESPONSE_MCSA_it_206460",1);
+                                                                                                        
+    
+    Question[Question.index].response_labels[1] = "206460";
+    
+                                                                                                        
+  //-->
+  </script><!-- END MCSA, MCMA, FIB --></td>
+</tr>
+</tbody></table>
+</div>
+
+          </div>
+                  <div class="item" id="knet-it_206462">
+            <!-- START MCSA, MCMA, FIB --><div class="Text" id="AIit_206462TextDiv"><table cellpadding="0" cellspacing="0" width="800"><tbody><tr><td class="questionNum" width="25">26</td><td valign="top" width="743"><form onsubmit="return false;" name="AIit_206462"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td colspan="2"><div class="ai-stem">A
+ technician is troubleshooting a 4-year-old computer that takes a long 
+time to boot, and identifies that the BIOS rediscovers all the hardware 
+at every boot. The technician thinks that the CMOS battery is losing the
+ charge. What would be the next step in the troubleshooting process?</div></td></tr><tr><td style="padding-right:1em;white-space:nowrap"><b>Correct</b><br><b>Response</b><br></td><td style="width:2048px"><b>Your</b><br><b>Response</b><br></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCSA_it_206462_1078723"><input id="RESPONSE_MCSA_it_206462_1078723" name="RESPONSE_MCSA_it_206462" value="1078723" disabled="disabled" type="RADIO">Test the theory to determine the cause.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206462_1078724"><input id="RESPONSE_MCSA_it_206462_1078724" name="RESPONSE_MCSA_it_206462" value="1078724" disabled="disabled" type="RADIO">Identify the problem.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206462_1078725"><input id="RESPONSE_MCSA_it_206462_1078725" name="RESPONSE_MCSA_it_206462" value="1078725" disabled="disabled" type="RADIO">Establish a theory of probable cause.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206462_1078726"><input checked="checked" id="RESPONSE_MCSA_it_206462_1078726" name="RESPONSE_MCSA_it_206462" value="1078726" disabled="disabled" type="RADIO">Establish a plan of action to resolve the problem.</label></td></tr><tr><td colspan="2"><div class="itemfeedback">The
+ problem has been identified and a theory has been formulated. The next 
+step is to test the theory to determine if it is right or wrong. In this
+ case, checking the battery with a multimeter would test the theory.</div></td></tr></tbody></table></form></td></tr><tr><td></td></tr></tbody></table></div><script type="text/javascript">
+      Question.index++;
+      Question[Question.index] = new QuestionObj("MCSA","AIit_206462","RESPONSE_MCSA_it_206462",1);
+      
+        Question[Question.index].response_labels[1] = "206462";
+      </script><!-- END MCSA, MCMA, FIB -->
+<div class="review" id="review">
+<table>
+<tbody><tr>
+<td><img src="PCM%20Practice%20test%201st%20try_files/spacer.gif" border="0" height="1" width="10"></td><td class="content"><script language="JavaScript">
+	  prev_name[prev_name.length]="RESPONSE_MCSA_it_206462";
+	  prev_value[prev_value.length]="206462=1078726";
+	  </script>
+<table>
+<tbody><tr>
+<td nowrap="1">This item references content from the following areas:<blockquote>IT Essentials<blockquote>
+<ul>
+<li>
+12.1.1
+ 
+Apply Troubleshooting Process to Computer Components and Peripherals
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</td>
+</tr>
+</tbody></table>
+<br><!-- START MCSA, MCMA, FIB --><script language="JavaScript">
+  <!--
+    
+                                                                                                        
+    Question.index++;
+    Question[Question.index] = new QuestionObj("MCSA","AIit_206462","RESPONSE_MCSA_it_206462",1);
+                                                                                                        
+    
+    Question[Question.index].response_labels[1] = "206462";
+    
+                                                                                                        
+  //-->
+  </script><!-- END MCSA, MCMA, FIB --></td>
+</tr>
+</tbody></table>
+</div>
+
+          </div>
+                  <div class="item" id="knet-it_206471">
+            <!-- START MCSA, MCMA, FIB --><div class="Text" id="AIit_206471TextDiv"><table cellpadding="0" cellspacing="0" width="800"><tbody><tr><td class="questionNum" width="25">29</td><td valign="top" width="743"><form onsubmit="return false;" name="AIit_206471"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td colspan="2"><div class="ai-stem">A
+ technician is troubleshooting a printer that prints unknown characters 
+instead of the correct document. What are two&nbsp;probable causes for 
+this? (Choose two.)</div></td></tr><tr><td style="padding-right:1em;white-space:nowrap"><b>Correct</b><br><b>Response</b><br></td><td style="width:2048px"><b>Your</b><br><b>Response</b><br></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCMA_it_206471_1080868"><input checked="checked" id="RESPONSE_MCMA_it_206471_1080868" name="RESPONSE_MCMA_it_206471" value="1080868" disabled="disabled" type="CHECKBOX">The computer has an incorrect driver installed.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCMA_it_206471_1080869"><input id="RESPONSE_MCMA_it_206471_1080869" name="RESPONSE_MCMA_it_206471" value="1080869" disabled="disabled" type="CHECKBOX">The printer has a loose data cable.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCMA_it_206471_1080870"><input id="RESPONSE_MCMA_it_206471_1080870" name="RESPONSE_MCMA_it_206471" value="1080870" disabled="disabled" type="CHECKBOX">The paper tray is empty.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCMA_it_206471_1080871"><input checked="checked" id="RESPONSE_MCMA_it_206471_1080871" name="RESPONSE_MCMA_it_206471" value="1080871" disabled="disabled" type="CHECKBOX">The paper is old, and moist from humidity.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCMA_it_206471_1080872"><input id="RESPONSE_MCMA_it_206471_1080872" name="RESPONSE_MCMA_it_206471" value="1080872" disabled="disabled" type="CHECKBOX">The printer service is stopped.</label></td></tr></tbody></table></form></td></tr><tr><td></td></tr></tbody></table></div><script type="text/javascript">
+      Question.index++;
+      Question[Question.index] = new QuestionObj("MCMA","AIit_206471","RESPONSE_MCMA_it_206471",5);
+      
+        Question[Question.index].response_labels[1] = "206471";
+      </script><!-- END MCSA, MCMA, FIB -->
+<div class="review" id="review">
+<table>
+<tbody><tr>
+<td><img src="PCM%20Practice%20test%201st%20try_files/spacer.gif" border="0" height="1" width="10"></td><td class="content"><script language="JavaScript">
+	  prev_name[prev_name.length]="RESPONSE_MCMA_it_206471";
+	  prev_value[prev_value.length]="206471=1080871";
+	  
+	  prev_name[prev_name.length]="RESPONSE_MCMA_it_206471";
+	  prev_value[prev_value.length]="206471=1080868";
+	  </script>
+<table>
+<tbody><tr>
+<td nowrap="1">This item references content from the following areas:<blockquote>IT Essentials<blockquote>
+<ul>
+<li>
+9.6.2
+ 
+Common Problems and Solutions for Printers
+</li>
+<li>
+12.5.1
+ 
+Apply Troubleshooting Process to Printers
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</td>
+</tr>
+</tbody></table>
+<br><!-- START MCSA, MCMA, FIB --><script language="JavaScript">
+  <!--
+    
+                                                                                                        
+    Question.index++;
+    Question[Question.index] = new QuestionObj("MCMA","AIit_206471","RESPONSE_MCMA_it_206471",5);
+                                                                                                        
+    
+    Question[Question.index].response_labels[1] = "206471";
+    
+                                                                                                        
+  //-->
+  </script><!-- END MCSA, MCMA, FIB --></td>
+</tr>
+</tbody></table>
+</div>
+
+          </div>
+                  <div class="item" id="knet-it_206543">
+            <!-- START MCSA, MCMA, FIB --><div class="Text" id="AIit_206543TextDiv"><table cellpadding="0" cellspacing="0" width="800"><tbody><tr><td class="questionNum" width="25">34</td><td valign="top" width="743"><form onsubmit="return false;" name="AIit_206543"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td colspan="2"><div class="ai-stem">How should a hard drive be partitioned to support a Windows 7 installation over a network?</div></td></tr><tr><td style="padding-right:1em;white-space:nowrap"><b>Correct</b><br><b>Response</b><br></td><td style="width:2048px"><b>Your</b><br><b>Response</b><br></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206543_1078396"><input id="RESPONSE_MCSA_it_206543_1078396" name="RESPONSE_MCSA_it_206543" value="1078396" disabled="disabled" type="RADIO">A FAT16 partition of at least 2 GB must be created.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCSA_it_206543_1078397"><input id="RESPONSE_MCSA_it_206543_1078397" name="RESPONSE_MCSA_it_206543" value="1078397" disabled="disabled" type="RADIO">A FAT32 partition of at least 5 GB must be created.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206543_1078398"><input id="RESPONSE_MCSA_it_206543_1078398" name="RESPONSE_MCSA_it_206543" value="1078398" disabled="disabled" type="RADIO">An NTFS partition of at least 2 GB must be created.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206543_1078399"><input checked="checked" id="RESPONSE_MCSA_it_206543_1078399" name="RESPONSE_MCSA_it_206543" value="1078399" disabled="disabled" type="RADIO">An NTFS partition of at least 3 GB must be created.</label></td></tr><tr><td colspan="2"><div class="itemfeedback">For
+ a Windows 7 network installation , the target PC must have a bootable 
+partition that is at least 5 GB in and formatted with the FAT 32 file 
+system, and include a network client.</div></td></tr></tbody></table></form></td></tr><tr><td></td></tr></tbody></table></div><script type="text/javascript">
+      Question.index++;
+      Question[Question.index] = new QuestionObj("MCSA","AIit_206543","RESPONSE_MCSA_it_206543",1);
+      
+        Question[Question.index].response_labels[1] = "206543";
+      </script><!-- END MCSA, MCMA, FIB -->
+<div class="review" id="review">
+<table>
+<tbody><tr>
+<td><img src="PCM%20Practice%20test%201st%20try_files/spacer.gif" border="0" height="1" width="10"></td><td class="content"><script language="JavaScript">
+	  prev_name[prev_name.length]="RESPONSE_MCSA_it_206543";
+	  prev_value[prev_value.length]="206543=1078399";
+	  </script>
+<table>
+<tbody><tr>
+<td nowrap="1">This item references content from the following areas:<blockquote>IT Essentials<blockquote>
+<ul>
+<li>
+5.2.2
+ 
+Custom Installation Options
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</td>
+</tr>
+</tbody></table>
+<br><!-- START MCSA, MCMA, FIB --><script language="JavaScript">
+  <!--
+    
+                                                                                                        
+    Question.index++;
+    Question[Question.index] = new QuestionObj("MCSA","AIit_206543","RESPONSE_MCSA_it_206543",1);
+                                                                                                        
+    
+    Question[Question.index].response_labels[1] = "206543";
+    
+                                                                                                        
+  //-->
+  </script><!-- END MCSA, MCMA, FIB --></td>
+</tr>
+</tbody></table>
+</div>
+
+          </div>
+                  <div class="item" id="knet-it_206560">
+            <!-- START MCSA, MCMA, FIB --><div class="Text" id="AIit_206560TextDiv"><table cellpadding="0" cellspacing="0" width="800"><tbody><tr><td class="questionNum" width="25">39</td><td valign="top" width="743"><form onsubmit="return false;" name="AIit_206560"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td colspan="2"><div class="ai-stem">What is an accurate description of asymmetric encryption technology?</div></td></tr><tr><td style="padding-right:1em;white-space:nowrap"><b>Correct</b><br><b>Response</b><br></td><td style="width:2048px"><b>Your</b><br><b>Response</b><br></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206560_1077184"><input id="RESPONSE_MCSA_it_206560_1077184" name="RESPONSE_MCSA_it_206560" value="1077184" disabled="disabled" type="RADIO">Asymmetric encryption is an encryption process that compares traffic on both ends to make sure the traffic has not been altered.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206560_1077185"><input checked="checked" id="RESPONSE_MCSA_it_206560_1077185" name="RESPONSE_MCSA_it_206560" value="1077185" disabled="disabled" type="RADIO">It is an encryption process that uses identical keys on both ends to establish the VPN.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206560_1077186"><input id="RESPONSE_MCSA_it_206560_1077186" name="RESPONSE_MCSA_it_206560" value="1077186" disabled="disabled" type="RADIO">It is an encryption protocol that is used to encrypt data as the data is sent over the VPN.</label></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCSA_it_206560_1077187"><input id="RESPONSE_MCSA_it_206560_1077187" name="RESPONSE_MCSA_it_206560" value="1077187" disabled="disabled" type="RADIO">It is an encryption process that uses a public and private key pair to encrypt/decrypt data.</label></td></tr></tbody></table></form></td></tr><tr><td></td></tr></tbody></table></div><script type="text/javascript">
+      Question.index++;
+      Question[Question.index] = new QuestionObj("MCSA","AIit_206560","RESPONSE_MCSA_it_206560",1);
+      
+        Question[Question.index].response_labels[1] = "206560";
+      </script><!-- END MCSA, MCMA, FIB -->
+<div class="review" id="review">
+<table>
+<tbody><tr>
+<td><img src="PCM%20Practice%20test%201st%20try_files/spacer.gif" border="0" height="1" width="10"></td><td class="content"><script language="JavaScript">
+	  prev_name[prev_name.length]="RESPONSE_MCSA_it_206560";
+	  prev_value[prev_value.length]="206560=1077185";
+	  </script>
+<table>
+<tbody><tr>
+<td nowrap="1">This item references content from the following areas:<blockquote>IT Essentials<blockquote>
+<ul>
+<li>
+10.2.4
+ 
+Security Techniques
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</td>
+</tr>
+</tbody></table>
+<br><!-- START MCSA, MCMA, FIB --><script language="JavaScript">
+  <!--
+    
+                                                                                                        
+    Question.index++;
+    Question[Question.index] = new QuestionObj("MCSA","AIit_206560","RESPONSE_MCSA_it_206560",1);
+                                                                                                        
+    
+    Question[Question.index].response_labels[1] = "206560";
+    
+                                                                                                        
+  //-->
+  </script><!-- END MCSA, MCMA, FIB --></td>
+</tr>
+</tbody></table>
+</div>
+
+          </div>
+                  <div class="item" id="knet-it_206563">
+            <!-- START MCSA, MCMA, FIB --><div class="Text" id="AIit_206563TextDiv"><table cellpadding="0" cellspacing="0" width="800"><tbody><tr><td class="questionNum" width="25">40</td><td valign="top" width="743"><form onsubmit="return false;" name="AIit_206563"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td colspan="2"><div class="ai-stem">A
+ technician wishes to secure the network authentication for all remote 
+users. Which security technology uses radio communication with a 
+computer before accepting a username and password?</div></td></tr><tr><td style="padding-right:1em;white-space:nowrap"><b>Correct</b><br><b>Response</b><br></td><td style="width:2048px"><b>Your</b><br><b>Response</b><br></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206563_1077204"><input checked="checked" id="RESPONSE_MCSA_it_206563_1077204" name="RESPONSE_MCSA_it_206563" value="1077204" disabled="disabled" type="RADIO">biometrics</label></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCSA_it_206563_1077205"><input id="RESPONSE_MCSA_it_206563_1077205" name="RESPONSE_MCSA_it_206563" value="1077205" disabled="disabled" type="RADIO">key fobs</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206563_1077206"><input id="RESPONSE_MCSA_it_206563_1077206" name="RESPONSE_MCSA_it_206563" value="1077206" disabled="disabled" type="RADIO">smart digital cards</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206563_1077207"><input id="RESPONSE_MCSA_it_206563_1077207" name="RESPONSE_MCSA_it_206563" value="1077207" disabled="disabled" type="RADIO">security dongles</label></td></tr></tbody></table></form></td></tr><tr><td></td></tr></tbody></table></div><script type="text/javascript">
+      Question.index++;
+      Question[Question.index] = new QuestionObj("MCSA","AIit_206563","RESPONSE_MCSA_it_206563",1);
+      
+        Question[Question.index].response_labels[1] = "206563";
+      </script><!-- END MCSA, MCMA, FIB -->
+<div class="review" id="review">
+<table>
+<tbody><tr>
+<td><img src="PCM%20Practice%20test%201st%20try_files/spacer.gif" border="0" height="1" width="10"></td><td class="content"><script language="JavaScript">
+	  prev_name[prev_name.length]="RESPONSE_MCSA_it_206563";
+	  prev_value[prev_value.length]="206563=1077204";
+	  </script>
+<table>
+<tbody><tr>
+<td nowrap="1">This item references content from the following areas:<blockquote>IT Essentials<blockquote>
+<ul>
+<li>
+10.2.2
+ 
+Protecting Data
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</td>
+</tr>
+</tbody></table>
+<br><!-- START MCSA, MCMA, FIB --><script language="JavaScript">
+  <!--
+    
+                                                                                                        
+    Question.index++;
+    Question[Question.index] = new QuestionObj("MCSA","AIit_206563","RESPONSE_MCSA_it_206563",1);
+                                                                                                        
+    
+    Question[Question.index].response_labels[1] = "206563";
+    
+                                                                                                        
+  //-->
+  </script><!-- END MCSA, MCMA, FIB --></td>
+</tr>
+</tbody></table>
+</div>
+
+          </div>
+                  <div class="item" id="knet-it_206566">
+            <!-- START MCSA, MCMA, FIB --><div class="Text" id="AIit_206566TextDiv"><table cellpadding="0" cellspacing="0" width="800"><tbody><tr><td class="questionNum" width="25">41</td><td valign="top" width="743"><form onsubmit="return false;" name="AIit_206566"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td colspan="2"><div class="ai-stem">Which
+ type of security threat can be transferred through email and is used to
+ gain sensitive information by recording the keystrokes of the email 
+recipient?</div></td></tr><tr><td style="padding-right:1em;white-space:nowrap"><b>Correct</b><br><b>Response</b><br></td><td style="width:2048px"><b>Your</b><br><b>Response</b><br></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206566_1079125"><input id="RESPONSE_MCSA_it_206566_1079125" name="RESPONSE_MCSA_it_206566" value="1079125" disabled="disabled" type="RADIO">adware</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206566_1079126"><input checked="checked" id="RESPONSE_MCSA_it_206566_1079126" name="RESPONSE_MCSA_it_206566" value="1079126" disabled="disabled" type="RADIO">Trojan</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206566_1079127"><input id="RESPONSE_MCSA_it_206566_1079127" name="RESPONSE_MCSA_it_206566" value="1079127" disabled="disabled" type="RADIO">worm</label></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCSA_it_206566_1079128"><input id="RESPONSE_MCSA_it_206566_1079128" name="RESPONSE_MCSA_it_206566" value="1079128" disabled="disabled" type="RADIO">virus</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206566_1079129"><input id="RESPONSE_MCSA_it_206566_1079129" name="RESPONSE_MCSA_it_206566" value="1079129" disabled="disabled" type="RADIO">grayware</label></td></tr><tr><td colspan="2"><div class="itemfeedback">Adware
+ does not record keystrokes. A worm self-replicates across the network. A
+ Trojan appears to be a legitimate program while carrying malware, 
+and&nbsp;grayware&nbsp;is a general term for software that may be 
+malware.</div></td></tr></tbody></table></form></td></tr><tr><td></td></tr></tbody></table></div><script type="text/javascript">
+      Question.index++;
+      Question[Question.index] = new QuestionObj("MCSA","AIit_206566","RESPONSE_MCSA_it_206566",1);
+      
+        Question[Question.index].response_labels[1] = "206566";
+      </script><!-- END MCSA, MCMA, FIB -->
+<div class="review" id="review">
+<table>
+<tbody><tr>
+<td><img src="PCM%20Practice%20test%201st%20try_files/spacer.gif" border="0" height="1" width="10"></td><td class="content"><script language="JavaScript">
+	  prev_name[prev_name.length]="RESPONSE_MCSA_it_206566";
+	  prev_value[prev_value.length]="206566=1079126";
+	  </script>
+<table>
+<tbody><tr>
+<td nowrap="1">This item references content from the following areas:<blockquote>IT Essentials<blockquote>
+<ul>
+<li>
+10.1.1
+ 
+Types of Security Threats
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</td>
+</tr>
+</tbody></table>
+<br><!-- START MCSA, MCMA, FIB --><script language="JavaScript">
+  <!--
+    
+                                                                                                        
+    Question.index++;
+    Question[Question.index] = new QuestionObj("MCSA","AIit_206566","RESPONSE_MCSA_it_206566",1);
+                                                                                                        
+    
+    Question[Question.index].response_labels[1] = "206566";
+    
+                                                                                                        
+  //-->
+  </script><!-- END MCSA, MCMA, FIB --></td>
+</tr>
+</tbody></table>
+</div>
+
+          </div>
+                  <div class="item" id="knet-it_206611">
+            <!-- START MCSA, MCMA, FIB --><div class="Text" id="AIit_206611TextDiv"><table cellpadding="0" cellspacing="0" width="800"><tbody><tr><td class="questionNum" width="25">51</td><td valign="top" width="743"><form onsubmit="return false;" name="AIit_206611"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td colspan="2"><div class="ai-stem">At which TCP/IP model layer would a MAC address be found?</div></td></tr><tr><td style="padding-right:1em;white-space:nowrap"><b>Correct</b><br><b>Response</b><br></td><td style="width:2048px"><b>Your</b><br><b>Response</b><br></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206611_1078052"><input id="RESPONSE_MCSA_it_206611_1078052" name="RESPONSE_MCSA_it_206611" value="1078052" disabled="disabled" type="RADIO">application</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206611_1078053"><input checked="checked" id="RESPONSE_MCSA_it_206611_1078053" name="RESPONSE_MCSA_it_206611" value="1078053" disabled="disabled" type="RADIO">transport</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCSA_it_206611_1078054"><input id="RESPONSE_MCSA_it_206611_1078054" name="RESPONSE_MCSA_it_206611" value="1078054" disabled="disabled" type="RADIO">internet</label></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCSA_it_206611_1078055"><input id="RESPONSE_MCSA_it_206611_1078055" name="RESPONSE_MCSA_it_206611" value="1078055" disabled="disabled" type="RADIO">network access</label></td></tr></tbody></table></form></td></tr><tr><td></td></tr></tbody></table></div><script type="text/javascript">
+      Question.index++;
+      Question[Question.index] = new QuestionObj("MCSA","AIit_206611","RESPONSE_MCSA_it_206611",1);
+      
+        Question[Question.index].response_labels[1] = "206611";
+      </script><!-- END MCSA, MCMA, FIB -->
+<div class="review" id="review">
+<table>
+<tbody><tr>
+<td><img src="PCM%20Practice%20test%201st%20try_files/spacer.gif" border="0" height="1" width="10"></td><td class="content"><script language="JavaScript">
+	  prev_name[prev_name.length]="RESPONSE_MCSA_it_206611";
+	  prev_value[prev_value.length]="206611=1078053";
+	  </script>
+<table>
+<tbody><tr>
+<td nowrap="1">This item references content from the following areas:<blockquote>IT Essentials<blockquote>
+<ul>
+<li>
+6.7.1
+ 
+Reference Models
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</td>
+</tr>
+</tbody></table>
+<br><!-- START MCSA, MCMA, FIB --><script language="JavaScript">
+  <!--
+    
+                                                                                                        
+    Question.index++;
+    Question[Question.index] = new QuestionObj("MCSA","AIit_206611","RESPONSE_MCSA_it_206611",1);
+                                                                                                        
+    
+    Question[Question.index].response_labels[1] = "206611";
+    
+                                                                                                        
+  //-->
+  </script><!-- END MCSA, MCMA, FIB --></td>
+</tr>
+</tbody></table>
+</div>
+
+          </div>
+                  <div class="item" id="knet-it_206650">
+            <!-- START MCSA, MCMA, FIB --><div class="Text" id="AIit_206650TextDiv"><table cellpadding="0" cellspacing="0" width="800"><tbody><tr><td class="questionNum" width="25">60</td><td valign="top" width="743"><form onsubmit="return false;" name="AIit_206650"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td colspan="2"><div class="ai-stem">Which two elements should typically be included in a computer security policy? (Choose two.)</div></td></tr><tr><td style="padding-right:1em;white-space:nowrap"><b>Correct</b><br><b>Response</b><br></td><td style="width:2048px"><b>Your</b><br><b>Response</b><br></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCMA_it_206650_1080572"><input id="RESPONSE_MCMA_it_206650_1080572" name="RESPONSE_MCMA_it_206650" value="1080572" disabled="disabled" type="CHECKBOX">an acceptable computer usage statement for the organization</label></td></tr><tr><td style="padding-right:1em;text-align:center;"><img class="tick" src="PCM%20Practice%20test%201st%20try_files/tick.gif" border="0" height="15" width="15"></td><td class="option"><label for="RESPONSE_MCMA_it_206650_1080573"><input checked="checked" id="RESPONSE_MCMA_it_206650_1080573" name="RESPONSE_MCMA_it_206650" value="1080573" disabled="disabled" type="CHECKBOX">requirements necessary for data to remain confidential on a network</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCMA_it_206650_1080574"><input id="RESPONSE_MCMA_it_206650_1080574" name="RESPONSE_MCMA_it_206650" value="1080574" disabled="disabled" type="CHECKBOX">a list of acceptable user passwords</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCMA_it_206650_1080575"><input checked="checked" id="RESPONSE_MCMA_it_206650_1080575" name="RESPONSE_MCMA_it_206650" value="1080575" disabled="disabled" type="CHECKBOX">details of the data file access procedures</label></td></tr><tr><td style="padding-right:1em;text-align:center;"></td><td class="option"><label for="RESPONSE_MCMA_it_206650_1080576"><input id="RESPONSE_MCMA_it_206650_1080576" name="RESPONSE_MCMA_it_206650" value="1080576" disabled="disabled" type="CHECKBOX">technical details of the biometric systems used</label></td></tr><tr><td colspan="2"><div class="itemfeedback">A
+ security policy may contain the rules that user passwords should 
+follow, but details of actual passwords, data access procedures, and 
+technical details of the security systems are usually confidential 
+operational procedures.</div></td></tr></tbody></table></form></td></tr><tr><td></td></tr></tbody></table></div><script type="text/javascript">
+      Question.index++;
+      Question[Question.index] = new QuestionObj("MCMA","AIit_206650","RESPONSE_MCMA_it_206650",5);
+      
+        Question[Question.index].response_labels[1] = "206650";
+      </script><!-- END MCSA, MCMA, FIB -->
+<div class="review" id="review">
+<table>
+<tbody><tr>
+<td><img src="PCM%20Practice%20test%201st%20try_files/spacer.gif" border="0" height="1" width="10"></td><td class="content"><script language="JavaScript">
+	  prev_name[prev_name.length]="RESPONSE_MCMA_it_206650";
+	  prev_value[prev_value.length]="206650=1080575";
+	  
+	  prev_name[prev_name.length]="RESPONSE_MCMA_it_206650";
+	  prev_value[prev_value.length]="206650=1080573";
+	  </script>
+<table>
+<tbody><tr>
+<td nowrap="1">This item references content from the following areas:<blockquote>IT Essentials<blockquote>
+<ul>
+<li>
+10.2.1
+ 
+Security Policies
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</td>
+</tr>
+</tbody></table>
+<br><!-- START MCSA, MCMA, FIB --><script language="JavaScript">
+  <!--
+    
+                                                                                                        
+    Question.index++;
+    Question[Question.index] = new QuestionObj("MCMA","AIit_206650","RESPONSE_MCMA_it_206650",5);
+                                                                                                        
+    
+    Question[Question.index].response_labels[1] = "206650";
+    
+                                                                                                        
+  //-->
+  </script><!-- END MCSA, MCMA, FIB --></td>
+</tr>
+</tbody></table>
+</div>
+
+          </div>
+              </div>
+    </div>
+      
+
+</body></html>
